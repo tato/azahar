@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    --primary-color: #f6b751;
+    --highlight-color: wheat;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  input[type=number] {
+    padding: 8px;
+    font-size: 1rem;
+  }
+
+  input[type=number]:focus {
+    outline-color: orange;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 4px 8px;
+    border: 1px solid grey;
+    border-radius: 2px;
+    background-color: var(--primary-color);
+  }
+
+  button:hover {
+    background-color: var(--highlight-color);
+  }
+
+  button:active {
+    color: darkgray;
+  }
+</style>
+
+<input type=number name=randMin id=randMin placeholder=Min value=1>
+<input type=number name=randMax id=randMax placeholder=Max value=100>
+<button id=generateButton>Generate</button>
+<p>
+  <span>🍊 Result: </span>
+  <span id="generateResult"></span>
+</p>
+
+
+<script>
+  const invoke = window.__TAURI__.invoke
+  invoke("greet", { name: "Worudo" })
+    .then(response => console.log(response))
+
+  const randMin = document.getElementById("randMin");
+  const randMax = document.getElementById("randMax");
+  const generateResult = document.getElementById("generateResult");
+  const generateButton = document.getElementById("generateButton");
+
+  generateButton.addEventListener("click", ev => {
+    const min = parseInt(randMin.value, 10) || 0
+    const max = parseInt(randMax.value, 10) || 0
+    invoke("generate", { min: min, max: max }).then(result => {
+      generateResult.innerText = result
+    })
+  });
+</script>

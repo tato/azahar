@@ -11,7 +11,7 @@ struct Generator(Mutex<StdRng>);
 
 #[tauri::command]
 fn generate(generator: tauri::State<Generator>, min: i64, max: i64) -> i64 {
-    generator.0.lock().unwrap().gen_range(min..(max+1))
+    generator.0.lock().unwrap().gen_range(min..=max)
 }
 
 fn main() {

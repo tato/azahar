@@ -1,8 +1,5 @@
 import { invoke } from "@tauri-apps/api"
 
-invoke("greet", { name: "Worudo" })
-  .then(response => console.log(response))
-
 const randMin = document.getElementById("randMin");
 const randMax = document.getElementById("randMax");
 const generateResult = document.getElementById("generateResult");

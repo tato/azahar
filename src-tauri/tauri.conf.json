@@ -52,10 +52,12 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "minHeight": 400,
+        "height": 400,
         "resizable": true,
         "title": "Azahar",
-        "width": 800
+        "minWidth": 600,
+        "width": 600
       }
     ]
   }

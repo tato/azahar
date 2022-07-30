@@ -8,7 +8,7 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "azar",
+    "productName": "azahar",
     "version": "0.1.0"
   },
   "tauri": {
@@ -55,7 +55,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "Azar",
+        "title": "Azahar",
         "width": 800
       }
     ]
